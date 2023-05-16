@@ -22,4 +22,25 @@ describe("POST /", function () {
       .send();
     expect(resp.statusCode).toEqual(400);
   });
+
+  test("throws error if incorrect data types in body", async function () {
+    const resp = await request(app)
+      .post("/shipments")
+      .send({
+        "productId": "1001",
+        "name": "ryan",
+        "addr": "123 main st",
+        "zip": "91234"
+      });
+    expect(resp.statusCode).toEqual(400);
+    expect(resp.body).toEqual({
+      "error": {
+        "message": [
+          "instance.productId is not of a type(s) integer"
+        ],
+        "status": 400
+      }
+    });
+  });
 });
+
