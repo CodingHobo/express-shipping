@@ -30,7 +30,5 @@ async function shipProduct({ productId, name, addr, zip }) {
 }
 
 module.exports = {
-  shipProduct,
-  SHIPIT_SHIP_URL,
-  SHIPIT_API_KEY
+  shipProduct
 };
